@@ -75,6 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
  (npx create-react-app stillbit)
  (npm install axios)
  npm start
+ npm run build
  (npm install gh-pages --save-dev)
 
  npm run deploy
