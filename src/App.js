@@ -1,82 +1,61 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
+//import XMLParser from 'react-xml-parser';
+import TuuliKomponentti from './komponentit/TuuliKomponentti'
 
-const api =   'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::edited::weather::scandinavia::point::timevaluepair&place=pieks%C3%A4m%C3%A4ki'
+const apibase =   'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::edited::weather::scandinavia::point::timevaluepair&place=Helsinki&parameters=WindDirection' 
+//https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::edited::weather::scandinavia::point::timevaluepair&place=pieks%C3%A4m%C3%A4ki&&parameters=WindDirection,WindSpeedMS
 
 
-
-function App() {
-  //const response = fetch(api, {
-  //  method: 'GET',
-  //  mode: 'no-cors',
-  //  headers: {
-  //    Authorization: "'Content-Type': 'text/html;Access-Control-Allow-Origin: '*'"
-  //  }
-  //})
-  //console.log("response: " + response);
+function App() {  
   
-  
-  const [hourData, setHourData] = useState([]);
+  const [data, setTuntiData] = useState([]);
+  const [paivays, setPaivaysData] = useState([]);
 
     useEffect(() => {
       const fetchData = async () => {
+        //https://stackoverflow.com/questions/68565542/javascript-date-now-utc-in-yyyy-mm-dd-hhmmss-format
+        const paivamaara = new Date();
+        paivamaara.toLocaleString('en-US', { timeZone: 'Europe/Helsinki' });
+        const vuosi = paivamaara.getFullYear();
+        const kuukausi = String(paivamaara.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+        const paiva = String(paivamaara.getDate()).padStart(2, '0');
+        const tunti = String(paivamaara.getHours()).padStart(2, '0');
+        const paivays = vuosi + "-" + kuukausi + "-" + paiva + "T" + tunti + ":00:00Z"
+        setPaivaysData(paivays);
+        let api = apibase+"&starttime="+paivays;
+
         const result = await axios.get(api, {
           headers: {
             'Access-Control-Allow-Origin': true,
           },
-          })
-        //var hours_day_index_start = result.data.indexOf("doubleOrNil")
+        });
+
+        let data = [];
+
+        /* > 270 && <90 */
         let parser = new DOMParser();
-        let xml = parser.parseFromString( result.data, "text/xml");
-        //xml.querySelectorAll('mts-1-1-WindDirection').forEach((item) => {
-        //  console.log(item);
-        //});
-
-       //let xml = parser.parseFromString( result.data, "text/xml").querySelector('doubleOrNilReasonTupleList').textContent;
-       //let xml = parser.parseFromString( result.data, "text/xml").querySelector('mts-1-1-WindDirection');
-
-       //<wml2:MeasurementTimeseries gml:id="mts-1-1-WindDirection">
-
-        setHourData(result.data);
-        // console.log(result.data);
-       //  console.log(result);
-       console.log(xml);
-
+        let parsedxml = parser.parseFromString(result.data, "text/xml");
+        parsedxml.querySelectorAll('MeasurementTVP').forEach((measurementTVPObjektit) => {
+            let value = measurementTVPObjektit.querySelector('value').textContent;
+            let time = measurementTVPObjektit.querySelector('time').textContent;
+            data.push({value, time});
+         });
+        setTuntiData(data);
       };
-      fetchData();
+     fetchData();
     }, []);  
 
-    const parseXMLStream = (xmlString) => {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
-      const items = [];
-      xmlDoc.querySelectorAll('item').forEach((item) => {
-        items.push({
-          id: item.getAttribute('id'),
-          name: item.querySelector('name').textContent,
-          value: item.querySelector('value').textContent,
-        });
-      });
-      return items;
-    };    
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        ></a>
-          {hourData}
-
-      </header>
-    </div>
-  );
-}
+    return (
+          <span align="center">
+              <h1>Stillbit!</h1>
+              <p>{paivays}</p>
+              <div>    
+                  <TuuliKomponentti data={data} />
+              </div>     
+          </span>
+    );
+  };
 
 export default App;
