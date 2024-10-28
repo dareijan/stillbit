@@ -1,6 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 const TuuliKomponentti = ({ data }) => {
     const rows = data.map(item => Object.values(item));
@@ -9,9 +11,24 @@ const TuuliKomponentti = ({ data }) => {
           {rows.map((row, index) => (
             <Row> 
                 {row.map((cell, index) => 
-                <Col>
-                    {cell}
-                </Col>
+                  <Col xs="6">
+                      <h1>
+                      {cell=='00:00'? <br></br> : ""}                    
+                      {cell=='00:00'? <hr class="hr-text" data-content="00:00"></hr> : ""}
+                      {cell=='00:00'? <br></br> : ""}    
+
+                      {cell=='12:00'? <br></br> : ""}                    
+                      {cell=='12:00'? <hr class="hr-text" data-content="12:00"></hr> : ""}
+                      {cell=='12:00'? <br></br> : ""}     
+
+                      {cell=='18:00'? <br></br> : ""}                    
+                      {cell=='18:00'? <hr class="hr-text" data-content="18:00"></hr> : ""}
+                      {cell=='18:00'? <br></br> : ""}                         
+
+                      {index==1 && (cell>=90 && cell<=270 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}  
+                      {index==1 && (cell<90|| cell>270 ) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}                      
+                    </h1>
+                  </Col>
               )}
           </Row>
           ))}

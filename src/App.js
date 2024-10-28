@@ -40,7 +40,13 @@ function App() {
         parsedxml.querySelectorAll('MeasurementTVP').forEach((measurementTVPObjektit) => {
             let value = measurementTVPObjektit.querySelector('value').textContent;
             let time = measurementTVPObjektit.querySelector('time').textContent;
-            data.push({value, time});
+
+            var kokonainenaika = time.split(/T/);
+            var kellonaika = kokonainenaika[1].split(/:/);
+            var kellonaika0 = kellonaika[0];
+            var kellonaika1 = kellonaika[1];
+            var uusiaika = kellonaika0 + ":" + kellonaika1;
+            data.push({uusiaika, value});
          });
         setTuntiData(data);
       };
