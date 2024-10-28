@@ -32,6 +32,8 @@ function App() {
           },
         });
 
+        var poissuljettavat_yön_ajat = ["01:00", "02:00", "03:00", "04:00", "05:00", "06:00"];
+
         let data = [];
 
         /* > 270 && <90 */
@@ -46,7 +48,11 @@ function App() {
             var kellonaika0 = kellonaika[0];
             var kellonaika1 = kellonaika[1];
             var uusiaika = kellonaika0 + ":" + kellonaika1;
-            data.push({uusiaika, value});
+            console.log(uusiaika + " " + poissuljettavat_yön_ajat.indexOf(uusiaika))
+            if (poissuljettavat_yön_ajat.indexOf(uusiaika) < 0) {
+             
+              data.push({uusiaika, value});
+             }
          });
         setTuntiData(data);
       };

@@ -8,26 +8,22 @@ const TuuliKomponentti = ({ data }) => {
     const rows = data.map(item => Object.values(item));
     return (
       <Container>
-          {rows.map((row, index) => (
-            <Row> 
+          {rows.map((row, index1) => (
+            <Row>
                 {row.map((cell, index) => 
-                  <Col xs="6">
-                      <h1>
-                      {cell=='00:00'? <br></br> : ""}                    
-                      {cell=='00:00'? <hr class="hr-text" data-content="00:00"></hr> : ""}
-                      {cell=='00:00'? <br></br> : ""}    
-
-                      {cell=='12:00'? <br></br> : ""}                    
+                  <Col md="6">
+                      <h5>              
+                      {cell=='07:00'? <hr class="hr-text" data-content="07:00"></hr> : ""}
+            
                       {cell=='12:00'? <hr class="hr-text" data-content="12:00"></hr> : ""}
-                      {cell=='12:00'? <br></br> : ""}     
-
-                      {cell=='18:00'? <br></br> : ""}                    
+                
                       {cell=='18:00'? <hr class="hr-text" data-content="18:00"></hr> : ""}
-                      {cell=='18:00'? <br></br> : ""}                         
 
                       {index==1 && (cell>=90 && cell<=270 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}  
-                      {index==1 && (cell<90|| cell>270 ) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}                      
-                    </h1>
+                      {index==1 && ((cell<120 && cell>90) || (cell>270 && cell<300)) ? <i class="bi bi-cloud-haze harmaa" title={cell}>{cell}</i>:""}                      
+                      {index==1 && (cell<90 || cell>300 ) ? <i class="bi bi-cloud-check harmaa" title={cell}>{cell}</i>:""}                      
+
+                    </h5>
                   </Col>
               )}
           </Row>
