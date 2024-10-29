@@ -6,14 +6,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const TuuliKomponentti = ({ data }) => {
     const rows = data.map(item => Object.values(item));
+    //    let taulukko =  Object.values({data}); //= Array.from(data);
+
     return (
       <Container>
           {rows.map((row, index1) => (
             <Row>
                 {row.map((cell, index) => 
-                  <Col md="6">
+                  <Col md="9">
 
-                      <h5>
+                      <h4>
 
                       {cell=='07:00'? <hr class="hr-text" data-content="07:00"></hr> : ""}
             
@@ -27,7 +29,7 @@ const TuuliKomponentti = ({ data }) => {
 
                       {index==1 && (cell<90 || cell>300 ) ? <i class="bi bi-cloud-check harmaa" title={cell}></i>:""}                      
 
-                    </h5>
+                    </h4>
 
                   </Col>
               )}

@@ -37,15 +37,16 @@
   }
 }
 
+
 .harmaa {
-  color: grey;
+  color:  hsl(245, 67%, 52%);
 }
 
 hr.hr-text {
   position: relative;
     border: none;
     height: 12px;
-    background: #cfcece;
+    background: hsl(245, 67%, 52%);
 }
 
 hr.hr-text::before {
@@ -54,10 +55,10 @@ hr.hr-text::before {
     background: #fff;
     #font-weight: bold;
     font-size: 0.85rem;
-    color: #cfcece;
+    color: hsl(245, 67%, 52%);
     border-radius: 30rem;
     padding: 0.2rem 2rem;
-    position: absolute;
+   position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
