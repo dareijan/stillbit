@@ -54,6 +54,7 @@ export default function App() {
             var kellonaika0 = kellonaika[0];
             var kellonaika1 = kellonaika[1];
             var uusiaika = kellonaika0 + ":" + kellonaika1;
+         //   var uusiaika = kokonainenaika;
             var ensimmainenaamu = false;
             if (poissuljettavat_yön_ajat.indexOf(uusiaika) < 0) {  
               lkm++;
@@ -96,11 +97,15 @@ export default function App() {
           state.activePage = 3;
         }
       };
-
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     return (
-      <React.Fragment>
-        <span align="center">
-        <Pagination className="px-5">
+      <div>
+
+      <Container>
+      <Row>
+      <Col md="9">
+      
+        <Pagination className="justify-content-center">
               <Pagination.Item
                 onClick={() => handlePageChange(1)}
                 key={1}
@@ -124,9 +129,14 @@ export default function App() {
               >
               {3}
               </Pagination.Item>
+
         </Pagination>
-        <TuuliKomponentti data={state.data} />
-        </span>
-    </React.Fragment>
+        </Col>
+      </Row>
+      </Container>
+      <TuuliKomponentti data={state.data} />
+      
+      </div>
+
     );
   };
