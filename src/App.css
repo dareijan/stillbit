@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #0d6efd;
+  color: black;
 }
 
 @keyframes App-logo-spin {
@@ -46,12 +46,11 @@ hr.hr-text {
   position: relative;
     border: none;
     height: 12px;
-    background: black
+    background: rgb(222, 168, 43)
 }
 hr.hr-text-aamu {
     position: relative;
     border: none;
-
     height: 12px;
     background:  #0d6efd;
 }
@@ -59,14 +58,13 @@ hr.hr-text::before {
     content: attr(data-content);
     display: inline-block;
     background: #fff;
-    #font-weight: bold;
     font-size: 0.85rem;
     color: black;
     border-radius: 30rem;
     padding: 0.2rem 2rem;
-   position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
-   transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
