@@ -37,23 +37,24 @@
   }
 }
 
-
 .harmaa {
   color:  black;
 }
 
 hr.hr-text {
   position: relative;
-    border: none;
-    height: 12px;
-    background: rgb(222, 168, 43)
+  border: none;
+  height: 12px;
+  background: rgb(222, 168, 43)
 }
+
 hr.hr-text-aamu {
-    position: relative;
-    border: none;
-    height: 12px;
-    background:  #0d6efd;
+  position: relative;
+  border: none;
+  height: 12px;
+  background:  #0d6efd;
 }
+
 hr.hr-text::before {
     content: attr(data-content);
     display: inline-block;
