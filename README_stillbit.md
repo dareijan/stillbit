@@ -53,3 +53,14 @@ homepage määritys oltava oikea
 
 (npm install react-bootstrap)
 (npm install bootstrap bootstrap-icons)
+
+
+# stillbit jatkuu
+
+ saattaa näyttää testatessa siltä että tekee pari kolme axios kutsua itsestään..koodattu siihen paikka App.js
+ parempi kompassi jotta voi tuulen asteita itse mittailla
+
+# stillibs linkit
+
+https://coreui.io/bootstrap/docs/layout/containers/
+

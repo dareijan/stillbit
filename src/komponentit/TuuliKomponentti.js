@@ -8,7 +8,7 @@ const TuuliKomponentti = ({ data }) => {
     const rows = data.map(item => Object.values(item));
 
     return (
-      <span class="border border-primary">
+
       <Container>
 
           {rows.map((row, index1) => (
@@ -42,7 +42,6 @@ const TuuliKomponentti = ({ data }) => {
           </Row>
           ))}
       </Container>
-      </span>
 
     );
   };
