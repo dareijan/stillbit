@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import TuuliKomponentti from './komponentit/TuuliKomponentti'
-const apibase =   'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::edited::weather::scandinavia::point::timevaluepair&place=Helsinki&parameters=WindDirection' 
+const apibase =   'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::edited::weather::scandinavia::point::timevaluepair&place=Pieksämäki&parameters=WindDirection' 
 
 
 export default function App() {  

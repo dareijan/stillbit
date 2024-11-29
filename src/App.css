@@ -12,6 +12,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+@media screen and (min-width: 800px) {
+ .kompassi {
+    display: none !important;
+ }
+}
 
 .App-header {
   background-color: #282c34;
