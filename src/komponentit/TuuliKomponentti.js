@@ -27,11 +27,13 @@ const TuuliKomponentti = ({ data }) => {
                 
                       {cell=='18:00'? <hr class="hr-text" data-content="18:00"></hr> : ""}
 
-                      {index==2 && (cell>=90 && cell<=270 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}
+                      {index==2 && ((cell>=240 && cell<=280) || (cell>=80 && cell<=100)) ? <i class="bi bi-cloud-fog2" title={cell}></i>:""}
 
-                      {index==2 && ((cell<120 && cell>90) || (cell>270 && cell<300)) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}
+                      {index==2 && (cell>=120 && cell<=240 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}
 
-                      {index==2 && (cell<90 || cell>300 ) ? <i class="bi bi-cloud-check harmaa" title={cell}></i>:""}    
+                      {index==2 && ((cell<120 && cell>100) || (cell>240 && cell<280)) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}
+
+                      {index==2 && (cell<80 || cell>280 ) ? <i class="bi bi-cloud-check harmaa" title={cell}></i>:""}    
 
                     </h1>
 
