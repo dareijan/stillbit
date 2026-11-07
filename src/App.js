@@ -69,7 +69,7 @@ export default function App() {
               lkm++;
               
               //päätellään milloin pitää piirtää huomisteksti
-              if(uusiaika == '07:00' && huomenna == 0) {
+              if(uusiaika === '07:00' && huomenna === 0) {
                 const viikonpaiva = ["Sunnuntai","Maanantai","Tiistai","Keskiviikko","Torstai","Perjantai","Lauantai"];
                 const paiva = new Date(kokonainenaika[0]);
                 paivamaarateksti = viikonpaiva[paiva.getDay()];
@@ -104,13 +104,13 @@ export default function App() {
   }, [state.data]);
 
     const handlePageChange = (pageNumber) => {
-      if (pageNumber == 1) {
+      if (pageNumber === 1) {
         setState((prev) => ({
           ...prev,
           data: saadata_1
         }));
       state.activePage = 1;
-      } else if (pageNumber == 2) {
+      } else if (pageNumber === 2) {
         setState((prev) => ({
           ...prev,
           data: saadata_2
@@ -132,7 +132,7 @@ export default function App() {
           <Row>
             <Col md="9">
               <div align="center">           
-              <b>Stillbits </b>kertoo Villa Metsälammen tyyneyden tuulen suunnan mukaan tunneittain    <br /> 
+              Sivusto kertoo Villa Metsälammen sään tyyneyden tuulen suunnan ja tuulen voimakkuuden mukaan tunneittain    <br /> 
               </div>          
             </Col>
           </Row>

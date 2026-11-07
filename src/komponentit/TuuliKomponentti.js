@@ -17,23 +17,23 @@ const TuuliKomponentti = ({ data }) => {
                   <Col md="9">
                     <span align="center">
 
-                      {cell=='07:00'? <hr class="hr-text-aamu" data-content="07:00"></hr> : ""}
+                      {cell==='07:00'? <hr class="hr-text-aamu" data-content="07:00"></hr> : ""}
 
-                      <h6> {index==1? cell :"" } </h6>
+                      <h6> {index===1? cell :"" } </h6>
 
                       <h1>
 
-                      {cell=='12:00'? <hr class="hr-text" data-content="12:00"></hr> : ""}
+                      {cell==='12:00'? <hr class="hr-text" data-content="12:00"></hr> : ""}
                 
-                      {cell=='18:00'? <hr class="hr-text" data-content="18:00"></hr> : ""}
+                      {cell==='18:00'? <hr class="hr-text" data-content="18:00"></hr> : ""}
 
-                      {index==2 && ((cell>=240 && cell<=280) || (cell>=80 && cell<=100)) ? <i class="bi bi-cloud-fog2" title={cell}></i>:""}
+                      {index===2 && ((cell>=240 && cell<=280) || (cell>=80 && cell<=100)) ? <i class="bi bi-cloud-fog2" title={cell}></i>:""}
 
-                      {index==2 && (cell>=120 && cell<=240 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}
+                      {index===2 && (cell>=120 && cell<=240 ) ? <i class="bi bi-cloud-fog2-fill harmaa" title={cell}></i>:""}
 
-                      {index==2 && ((cell<120 && cell>100) || (cell>240 && cell<280)) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}
+                      {index===2 && ((cell<120 && cell>100)) ? <i class="bi bi-cloud-haze harmaa" title={cell}></i>:""}
 
-                      {index==2 && (cell<80 || cell>280 ) ? <i class="bi bi-cloud-check harmaa" title={cell}></i>:""}    
+                      {index===2 && (cell<80 || cell>280 ) ? <i class="bi bi-cloud-check harmaa" title={cell}></i>:""}    
 
                     </h1>
 
